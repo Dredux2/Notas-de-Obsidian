@@ -317,7 +317,7 @@ public class Main {
 
 ### Tabla comparativa entre Clase Abstracta e Interfaz:
 
-![Pasted image 20250101143549.png](src/site/img/user/Recursos/Fotos/Pasted image 20250101143549.png)
+![image](https://github.com/user-attachments/assets/d0a99447-06f0-43ca-b415-1fdf591096a6)
 
 ---
 ## **4. Encapsulamiento** 🔒
