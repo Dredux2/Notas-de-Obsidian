@@ -3,6 +3,59 @@
 ---
 
 #Curso 
+
+---
+# Recursividad
+
+La recursividad es como un bucle, pero en vez de repetir con un `for` o `while`, se repite llamándose a sí misma. Cada llamada guarda información en memoria y, al terminar, regresa por los pasos anteriores para completar los cálculos. 
+
+### **1. Pasos básicos para usar recursividad:**
+
+>1. **Caso base**: Es la condición para **detener** las llamadas. Sin esto, la función se repetiría para siempre y daría un error.
+>>
+>2. **Caso recursivo**: Aquí es donde la función **se llama a sí misma** pero con un problema más pequeño.
+>>
+>3. **Reducción**: Cada vez que la función se llama, el problema debe ser más pequeño para acercarse al caso base.
+
+## **Ejemplo:**
+
+```java
+public static int factorial(int n) {
+    if (n == 0 || n == 1) {  // Caso base
+        return 1;
+    } else {                 // Caso recursivo
+        return n * factorial(n - 1);
+    }
+}
+
+public static void main(String[] args) {
+    int resultado = factorial(4);
+    System.out.println(resultado); // 24
+}
+```
+### **2. Cómo funciona paso a paso:**
+
+>1. Llamamos a `factorial(4)`.
+>>
+>2. Como $4 = 0$ y $4 = 1$, va al caso recursivo.
+>>
+>3. Calcula $4 × factorial(3)$.
+>>
+>4. Luego, llama a $factorial(3)$, que calcula $3 * factorial(2)$.
+>>
+>5. Así sigue hasta que llega a $factorial(1)$ .
+>>
+>6. En $factorial(1)$, devuelve 1 porque cumple el caso base.
+>>
+>7. Después vuelve hacia atrás multiplicando:
+ >   - $2×1=2$
+ >   - $3×2=6$
+ >   - $4×6=24$
+ 
+ Básicamente, se usa para dividir un problema grande en partes más pequeñas, hasta que sea tan simple que se pueda resolver directamente.
+ 
+---
+---
 # Estructuras de Datos
 
 Las estructuras de datos permiten organizar y almacenar datos de manera eficiente. En Java, las principales estructuras se pueden clasificar en:
@@ -317,7 +370,7 @@ public class Main {
 
 ### Tabla comparativa entre Clase Abstracta e Interfaz:
 
-![image](https://github.com/user-attachments/assets/d0a99447-06f0-43ca-b415-1fdf591096a6)
+![Pasted image 20250101143549.png](/img/user/Recursos/Fotos/Pasted%20image%2020250101143549.png)
 
 ---
 ## **4. Encapsulamiento** 🔒
