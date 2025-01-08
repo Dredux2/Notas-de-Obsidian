@@ -7,9 +7,10 @@
 ---
 # Recursividad
 
-La recursividad es como un bucle, pero en vez de repetir con un `for` o `while`, se repite llamándose a sí misma. Cada llamada guarda información en memoria y, al terminar, regresa por los pasos anteriores para completar los cálculos. 
+La **recursividad** es cuando una función se llama a sí misma para resolver un problema. Es útil para dividir problemas grandes en partes más pequeñas y fáciles de manejar. 
 
-### **1. Pasos básicos para usar recursividad:**
+Cada llamada guarda información en memoria y, al terminar, regresa por los pasos anteriores para completar los cálculos. 
+### **1. Reglas para usar recursividad:**
 
 >1. **Caso base**: Es la condición para **detener** las llamadas. Sin esto, la función se repetiría para siempre y daría un error.
 >>
@@ -20,40 +21,49 @@ La recursividad es como un bucle, pero en vez de repetir con un `for` o `while`,
 ## **Ejemplo:**
 
 ```java
-public static int factorial(int n) {
-    if (n == 0 || n == 1) {  // Caso base
-        return 1;
-    } else {                 // Caso recursivo
-        return n * factorial(n - 1);
+public class Ejemplo {
+    static int proceso1(int a) {
+        int x = 0;
+        for(int i = 0; i <= a; i += 2) x += proceso2(i, i + 1);
+        return x;
     }
-}
-
-public static void main(String[] args) {
-    int resultado = factorial(4);
-    System.out.println(resultado); // 24
+	
+    static int proceso2(int a, int b) {
+        int y = 1;
+        for(int j = 0; j < a + b; j++) y++;
+        return y;
+    }
+	
+    public static void main (String args[]) {
+        int x = proceso1(4);
+    }
 }
 ```
 ### **2. Cómo funciona paso a paso:**
 
->1. Llamamos a `factorial(4)`.
+>1. `Main` llama a `proceso1` y le asigna el valor 4: `proceso(4)`.
 >>
->2. Como $4 = 0$ y $4 = 1$, va al caso recursivo.
+>2. `Proceso1` declara dos variables iniciales: `x = 0` y `a = 4`.
 >>
->3. Calcula $4 × factorial(3)$.
+>3. El primer bucle de `Proceso1` declara `i = 0` y declara que `x += proceso2(0, 1)`, por lo que ahora `x = 1`.
 >>
->4. Luego, llama a $factorial(3)$, que calcula $3 * factorial(2)$.
+>4. `proceso2(0, 1)` declara una variable inicial `y = 1`. 
 >>
->5. Así sigue hasta que llega a $factorial(1)$ .
+>5. Y en el primer bucle declara que `j = 0`. Además, por cada vez que se ejecute se declara que `y++`, por lo que ahora `y = 2`.
 >>
->6. En $factorial(1)$, devuelve 1 porque cumple el caso base.
+>6. Ahora, `proceso2` devuelve `y = 2` al `proceso1`, ya que ese método aún no ha terminado su ejecución. 
+>    
+>    Eso hace que `x += proceso2(i, i + 1)` se despeje como esto:
+>    `x = x(0) + proceso2(2)`. Y de esa forma tenemos como resultado que `x = 2`
 >>
->7. Después vuelve hacia atrás multiplicando:
- >   - $2×1=2$
- >   - $3×2=6$
- >   - $4×6=24$
+>7. Sin embargo, el programa aún no ha terminado. `proceso1` no podrá devolver el valor de `x` hasta que `i(2)` no sea mayor que `a(4)`, por lo que el programa necesitara 2 interacciones más. Dando como resultado final que `x = 18`
  
- Básicamente, se usa para dividir un problema grande en partes más pequeñas, hasta que sea tan simple que se pueda resolver directamente.
- 
+Así que, el bucle en este ejercicio es:
+
+1. **Llamar a proceso2** → Calcula y devuelve un valor.
+2. **Sustituir el valor devuelto** → Se suma al acumulador **x**.
+3. **Actualizar x** → Preparado para la siguiente iteración.
+
 ---
 ---
 # Estructuras de Datos
